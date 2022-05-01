@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+To view your home page, please log in
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Don't Have An Account? <a class="ml-2" href="{{ url_for('register') }}">
+        Register Now
+    </a>
+    </small>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">
+        Sign In
+    </a>
+    </small>
+</div>
+{% endblock content %}

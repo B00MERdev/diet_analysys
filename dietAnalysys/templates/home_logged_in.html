@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Add a portion</legend>
+            <div class="form-group">
+                {{ form.nazwa_produktu_spozywczego.label(class="form-control-label") }}
+                {% if form.nazwa_produktu_spozywczego.errors %}
+                {{ form.nazwa_produktu_spozywczego(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.nazwa_produktu_spozywczego.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.nazwa_produktu_spozywczego(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.mass.label(class="form-control-label") }}
+                {% if form.mass.errors %}
+                {{ form.mass(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.mass.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.mass(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+        <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form_delete.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+        <div class="content-section">
+                {% for porcja in porcje %}
+            <div>
+                {{ porcja }}
+            </div>
+                {% endfor %}
+            </div>
+</div>
+    <div class="col-md-4">
+      <div class="content-section">
+        <h3>Your diet score is</h3>
+        <p class='text-muted'>
+          {{ score }} / 10
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-light">
+                Ca: {{ user.ca }} mg / {{ user_rdi.ca }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Cu: {{ user.cu }} mg / {{ user_rdi.cu }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Fe: {{ user.fe }} mg / {{ user_rdi.fe }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Mg: {{ user.mg }} mg / {{ user_rdi.mg }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                P: {{ user.p }} mg / {{ user_rdi.p }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                K: {{ user.k }} mg / {{ user_rdi.k }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Se: {{ user.se }} mg / {{ user_rdi.se }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Zn: {{ user.zn }} mg / {{ user_rdi.zn }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Vitamin B12: {{ user.vitamin_b12 }} mg / {{ user_rdi.vitamin_b12 }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Vitamin B3: {{ user.vitamin_b3 }} mg / {{ user_rdi.vitamin_b3 }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Vitamin B2: {{ user.vitamin_b2 }} mg / {{ user_rdi.vitamin_b2 }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Vitamin B1: {{ user.vitamin_b1 }} mg / {{ user_rdi.vitamin_b1 }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Vitamin B6: {{ user.vitamin_b6 }} mg / {{ user_rdi.vitamin_b6 }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Vitamin E: {{ user.vitamin_e }} mg / {{ user_rdi.vitamin_e }} mg/day
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Vitamin K: {{ user.vitamin_k }} mg / {{ user_rdi.vitamin_k }} mg/day
+            </li>
+          </ul>
+        </p>
+      </div>
+    </div>
+</div>
+
+{% endblock content %}
